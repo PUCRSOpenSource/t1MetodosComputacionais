@@ -76,16 +76,28 @@ Group), entre outros.
 
 \section{Métodos Iterativos}
 
-Um \textbf{método iterativo} é um procedimento matemático para resolução de equações que gera uma sequência de aproximações, cada vez melhores, que servem como solução para uma classe de problemas. Uma implementação específica de um método iterativo, incluindo sua condição de parada, é um algoritmo. Um método iterativo é considerado \textbf{convergente} se a sequência de valores geradas converge para uma dada aproximação inicial.
+Um \textbf{método iterativo} é um procedimento matemático para resolução de
+equações que gera uma sequência de aproximações, cada vez melhores, que servem
+como solução para uma classe de problemas. Uma implementação específica de um
+método iterativo, incluindo sua condição de parada, é um algoritmo. Um método
+iterativo é considerado \textbf{convergente} se a sequência de valores geradas
+converge para uma dada aproximação inicial.
 
 Para uma definição mais teórica, o seguinte autor define:
 
 \begin{quotation}
-Um método iterativo consiste em repetir uma determinada operação um certo número de vezes até que nos seja fornecida uma aproximação, que satisfaça as condições do problema e, para tal, a sequência de valores deve ser convergente.\cite{batista2014metodos}
+
+``Um método iterativo consiste em repetir uma determinada operação um certo número
+de vezes até que nos seja fornecida uma aproximação, que satisfaça as condições
+do problema e, para tal, a sequência de valores deve ser
+convergente.''\cite{batista2014metodos}
 
 \end{quotation}
 
-Nos problemas do tipo \emph{encontre a raíz da equação}, um método iterativo usa uma suposição inicial para gerar sucessivas aproximações à uma solução. Em Contraste, \textbf{métodos diretos} tentam resolver o problema em uma sequência \emph{finita} de operações.
+Nos problemas do tipo encontre a raíz da equação, um método iterativo usa
+uma suposição inicial para gerar sucessivas aproximações à uma solução. Em
+Contraste, \textbf{métodos diretos} tentam resolver o problema em uma sequência
+\emph{finita} de operações.
 
 Um método iterativo é formado por quatro partes:~\cite{claudio2000calculo}
 \begin{enumerate}[a)]
@@ -209,9 +221,13 @@ end
 
 \subsubsection{Método de Newton}
 
-A ideia do método de Newton é a seguinte: É estabelecido um chute inicial, que seja razoavelmente perto da raíz verdadeira, então a função é aproximada por sua reta tangente. O $x$ que intercepta a reta e a função é computado, e ele será uma melhor aproximação que o chute inicial. O método, então, pode ser iterado.
+A ideia do método de Newton é a partir de um valor inicial arbitrário, então a
+função é aproximada por sua reta tangente. O $x$ que intercepta a reta e a
+função é computado, e ele será uma melhor aproximação que o chute inicial. O
+método, então, pode ser iterado.
 
-Analizando novamente o número de ouro, mas com o método de newton, um número muito menor de iterações é observado.
+Analizando novamente o número de ouro, mas com o método de newton, um número
+muito menor de iterações é observado.
 
 \begin{table}[H]
 	\centering
@@ -231,7 +247,7 @@ Analizando novamente o número de ouro, mas com o método de newton, um número 
 		\hline
 		6 & 1.61803398874989490253 & 0.00000000000000000000 \\
 		\hline
-	\end{tabular}
+	 \end{tabular}
 	\label{golden_newton}
 	\caption{Convergência do número de ouro pelo método de newton}
 \end{table}
@@ -268,7 +284,11 @@ end
 
 \subsubsection{Método Misterioso}
 
-Encontramos em um \href{http://mathforum.org/library/drmath/view/65244.html}{fórum de matemática} um método iterativo que calcula $\pi$ de uma forma aparentemente mais simples, apesar de sua complexidade estar escondida na função $sin$. O método está descrito a seguir:
+Encontramos em um
+\href{http://mathforum.org/library/drmath/view/65244.html}{fórum de matemática}
+um método iterativo que calcula $\pi$ de uma forma aparentemente mais simples,
+apesar de sua complexidade estar escondida na função $sin$. O método está
+descrito a seguir:
 
 \begin{equation}
 P(n+1) = P(n) + sin(P(n))
