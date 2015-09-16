@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{amsmath}
 
 \graphicspath{{figures/}}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -102,9 +103,22 @@ Nessa seção vamos encontrar números irracionais conhecidos utilizando método
 
 \subsection{Número de Ouro}
 
+	O número de ouro, também conhecido como $\phi$, é o resultado da seguinte
+	equação: $x^2-x-1$,existem algums algoritmos para realizar a aproximação
+	neste artigo duas destas formas serão abordadas, a primeira utilizando
+	frações continuas e o seguundo calculando as raizaes da equação utiizando
+	método de newton.
+
 \subsubsection{Frações Continuadas}
 
-Para encontrarmos o número de ouro utilizamos o ambiente matemático \emph{octave}, e conseguimos gerar a seguinte tabela:
+	Frações conitinuadas são formas de representar números reais de tal forma
+	que a expressão básica tem o seguinte formato:
+
+	$$\frac{b_1}{a_1 + \frac{b_2}{a_2 + \frac{b_3}{a_3 + \dots }}$$
+
+Para encontrarmos o número de
+ouro utilizamos o ambiente matemático \emph{octave}, e conseguimos gerar a
+seguinte tabela:
 
 \begin{table}[H]
 	\centering
