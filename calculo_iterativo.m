@@ -59,8 +59,10 @@ function [ex] = exponential(x, iteration)
 	ex2 = e^x;
 	ex(1,1) = 1;
 	ex(2,1) = ex2;
+	ex(3,1) = ex2 - ex(1,1);
 	for k=2:iteration
 		ex(1,k) = ex(1,k-1) + (power(x,k) / factorial(k));
 		ex(2,k) = ex2;
+		ex(3,k) = ex2 - ex(1,k);
 	end
 end
