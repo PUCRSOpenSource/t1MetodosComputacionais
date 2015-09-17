@@ -39,7 +39,7 @@ function [pif, pi_vec] = pi_it2(iteration)
 	end
 end
 
-function [ef, e_vec] = euller_taylor(iteration)
+function [ef, e_vec] = euler_taylor(iteration)
 	ef(1) = 1;
 	e_vec(1) = e;
 	for i = 2:iteration
@@ -49,9 +49,9 @@ function [ef, e_vec] = euller_taylor(iteration)
 end
 
 function [er] = erdos(iteration)
-	er = 0
-	for i=1:iteration
-		er += 1 / ((2^i)-1);
+	er(1) = 1;
+	for i=2:iteration
+		er(i) = er(i-1) + (1 / ((2^i)-1));
 	end
 end
 
