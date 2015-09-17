@@ -1,20 +1,20 @@
 output_precision(60)
-function [x, ex] = newton( f, df, x0, tol, nmax)
+function [x] = newton( f, df, x0, tol, nmax)
 	f = inline(f);
 	df = inline(df);
-	x(1) = double(x0 - (f(x0)/df(x0)));
-	ex(1) = abs(x(1)-x0);
+	x(1,1) = double(x0 - (f(x0)/df(x0)));
+	x(2,1) = abs(x(1)-x0);
 	k = 2;
-	while k <= nmax && ex(k-1) > tol
-		 x(k) = double(double(x(k-1)) - double((f(x(k-1))/df(x(k-1)))));
-		 ex(k) = abs(x(k)-x(k-1));
+	while k <= nmax && e(2,k-1) > tol
+		 x(1,k) = double(double(x(1,k-1)) - double((f(x(1,k-1))/df(x(1,k-1)))));
+		 ex(2,k) = abs(x(1,k)-x(1,k-1));
 		 k = k+1;
 	end
 end
 
-function [x] =  phi_frac(precision=1)
+function [x] =  phi_frac(iteration=1)
 	aux = 1;
-	for i= 1:precision
+	for i= 1:iteration
 		aux = double(1 + 1/aux);
 		x(i) = aux;
 	end
@@ -39,7 +39,7 @@ function [pif, pi_vec] = pi_it2(iteration)
 	end
 end
 
-function [ef, e_vec] = euler_taylor(iteration)
+function [ef, e_vec] = euller_taylor(iteration)
 	ef(1) = 1;
 	e_vec(1) = e;
 	for i = 2:iteration
@@ -55,3 +55,12 @@ function [er] = erdos(iteration)
 	end
 end
 
+function [ex] = exponential(x, iteration)
+	ex2 = e^x;
+	ex(1,1) = 1;
+	ex(2,1) = ex2;
+	for k=2:iteration
+		ex(1,k) = ex(1,k-1) + (power(x,k) / factorial(k));
+		ex(2,k) = ex2;
+	end
+end
