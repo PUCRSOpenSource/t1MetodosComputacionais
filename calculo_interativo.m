@@ -39,7 +39,7 @@ function [pif, pi_vec] = pi_it2(iteration)
 	end
 end
 
-function [ef, e_vec] = euller_taylor(iteration)
+function [ef, e_vec] = euler_taylor(iteration)
 	ef(1) = 1;
 	e_vec(1) = e;
 	for i = 2:iteration
