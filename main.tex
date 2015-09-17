@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{morefloats}
 
 \graphicspath{{figures/}}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -38,7 +39,9 @@
 %
 %Explicação do método de ponto fixo pelo Batista
 %
-%Um método iterativo simples consiste em resolver uma equação do tipo $x = \phi(x)$, aplicando sucessivamente a função $\phi$. De modo que, se a sequência $x_{n+1} = \phi(x_{n})$ for convergente, converge para uma solução da equação.
+%Um método iterativo simples consiste em resolver uma equação do tipo $x =
+%\phi(x)$, aplicando sucessivamente a função $\phi$. De modo que, se a sequência
+%$x_{n+1} = \phi(x_{n})$ for convergente, converge para uma solução da equação.
 
 \author{Daniel De Luca, Diego Jornada, Matthias Nunes}
 
@@ -195,7 +198,8 @@ Nessa seção vamos encontrar números irracionais conhecidos utilizando método
 	\caption{Convergência do número de ouro pelo método de frações continuadas}
 \end{table}
 
-Como fica ilustrado na tabela, o número já se estabiliza antes mesmo de chegarmos à 50 iterações.
+Como fica ilustrado na tabela, o número já se estabiliza antes mesmo de
+chegarmos à 50 iterações.
 
 \begin{figure}[H]
     \centering
@@ -294,7 +298,8 @@ descrito a seguir:
 P(n+1) = P(n) + sin(P(n))
 \end{equation}
 
-$P(n)$ seria a aproximação de $\pi$ na iteração $n$. Esse método consegue convergir para $\pi$ com um número muito baixo de iterações.
+$P(n)$ seria a aproximação de $\pi$ na iteração $n$. Esse método consegue
+convergir para $\pi$ com um número muito baixo de iterações.
 
 \begin{table}[H]
 	\centering
@@ -335,7 +340,7 @@ $P(n)$ seria a aproximação de $\pi$ na iteração $n$. Esse método consegue c
 	\caption{Convergência do $\pi$}
 \end{table}
 
-O seguinte gráfico foi gerado com a análise dos result
+O seguinte gráfico foi gerado com a análise dos resultos:
 
 \begin{figure}[H]
     \centering
@@ -360,7 +365,86 @@ end
 
 \end{lstlisting}
 
+\subsection{Erdős-Borwein}
 
+A constante de Erdős-Borwein é a soma dos inversos multiplicativos dos números
+de Mersenne, e por definição é:
+
+\begin{equation}
+	E = \displaystyle\sum_{n=1}^{\infty} \frac{1}{2^n-1} \approx 1.606695152415291763\dots
+\end{equation}
+
+Executando no \emph{octave}, obtemos os seguintes resultados:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+    	\hline
+		Iteração & $E$ & Iteração & $E$ \\
+    	\hline
+		1 & 1.0000000000 & 19 & 1.6066932451 \\
+    	\hline
+		2 & 1.3333333333 & 20 & 1.6066941987 \\
+    	\hline
+		3 & 1.4761904762 & 21 & 1.6066946756 \\
+    	\hline
+		4 & 1.5428571429 & 22 & 1.6066949140 \\
+    	\hline
+		5 & 1.5751152074 & 23 & 1.6066950332 \\
+    	\hline
+		6 & 1.5909882232 & 24 & 1.6066950928 \\
+    	\hline
+		7 & 1.5988622390 & 25 & 1.6066951226 \\
+    	\hline
+		8 & 1.6027838076 & 26 & 1.6066951375 \\
+    	\hline
+		9 & 1.6047407548 & 27 & 1.6066951450 \\
+    	\hline
+		10 & 1.6057182719 & 28 & 1.6066951487 \\
+    	\hline
+		11 & 1.6062067917 & 29 & 1.6066951506 \\
+    	\hline
+		12 & 1.6064509919 & 30 & 1.6066951515 \\
+    	\hline
+		13 & 1.6065730771 & 31 & 1.6066951519 \\
+    	\hline
+		14 & 1.6066341160 & 32 & 1.6066951522 \\
+    	\hline
+		15 & 1.6066646345 & 33 & 1.6066951523 \\
+    	\hline
+		16 & 1.6066798935 & 34 & 1.6066951524 \\
+    	\hline
+		17 & 1.6066875230 & 35 & 1.6066951524 \\
+    	\hline
+		18 & 1.6066913377 & 36 & 1.6066951524 \\
+    	\hline
+	\end{tabular}
+	\label{erdos_table}
+	\caption{Convergência do $E$}
+\end{table}
+
+Podemos ver o número se estabilizando no seguinte gráfico, construído a partir
+dos resultados da tabela.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=100mm]{erdos.png}
+    \caption{Convergência do erdős-borwein em 50 iterações}
+	\label{erdos_graphic}
+\end{figure}
+
+A definição de $E$ foi codificada da seguinte maneira:
+
+\begin{lstlisting}
+
+function [er] = erdos(iteration)
+	er(1) = 1;
+	for i=2:iteration
+		er(i) = er(i-1) + (1 / ((2^i)-1));
+	end
+end
+
+\end{lstlisting}
 
 %\nocite{*}
 
