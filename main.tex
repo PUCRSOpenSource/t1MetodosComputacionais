@@ -366,6 +366,121 @@ end
 
 \end{lstlisting}
 
+\subsection{$e^x$}
+
+	A função $e^x$ é um função exponencial cuja base é o número de Euler,
+	também conhecida como função exponencial natural.
+
+	Para o calculo da da função utilizamos a seguinte série de Taylor
+	
+	\begin{equation}
+		\sum_{n=1}^{n} = \frac{x^n}{n!}
+	\end{equation}
+
+	Para exemplificar a foram realizadas 40 iteração para a seguinte função $e^5$, e obtivemos os seguintes resultaodos:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+    	\hline
+		Iteração & Valor Iteração & $e^5$ & Diferença \\
+		\hline
+		1 & 1.000000 & 148.413159 & 147.413159\\
+		\hline
+		2 & 6.000000 & 148.413159 & 142.413159\\
+		\hline
+		3 & 18.500000 & 148.413159 & 129.913159\\
+		\hline
+		4 & 39.333333 & 148.413159 & 109.079826\\
+		\hline
+		5 & 65.375000 & 148.413159 & 83.038159\\
+		\hline
+		6 & 91.416667 & 148.413159 & 56.996492\\
+		\hline
+		7 & 113.118056 & 148.413159 & 35.295104\\
+		\hline
+		8 & 128.619048 & 148.413159 & 19.794111\\
+		\hline
+		9 & 138.307168 & 148.413159 & 10.105991\\
+		\hline
+		10 & 143.689457 & 148.413159 & 4.723703\\
+		\hline
+		11 & 146.380601 & 148.413159 & 2.032558\\
+		\hline
+		12 & 147.603849 & 148.413159 & 0.809311\\
+		\hline
+		13 & 148.113535 & 148.413159 & 0.299624\\
+		\hline
+		14 & 148.309568 & 148.413159 & 0.103591\\
+		\hline
+		15 & 148.379580 & 148.413159 & 0.033579\\
+		\hline
+		16 & 148.402917 & 148.413159 & 0.010242\\
+		\hline
+		17 & 148.410210 & 148.413159 & 0.002949\\
+		\hline
+		18 & 148.412355 & 148.413159 & 0.000804\\
+		\hline
+		19 & 148.412951 & 148.413159 & 0.000208\\
+		\hline
+		20 & 148.413108 & 148.413159 & 0.000051\\
+		\hline
+		21 & 148.413147 & 148.413159 & 0.000012\\
+		\hline
+		22 & 148.413156 & 148.413159 & 0.000003\\
+		\hline
+		23 & 148.413159 & 148.413159 & 0.000001\\
+		\hline
+		24 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		25 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		26 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		27 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		28 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		29 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		30 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		31 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		32 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		33 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		34 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		35 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		36 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		37 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		38 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		39 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+		40 & 148.413159 & 148.413159 & 0.000000\\
+		\hline
+	\end{tabular}
+	\label{ex_table}
+	\caption{Convergência de $e^5$}
+\end{table}
+
+Utilizando a série de Taylor foi percebido que o método converge após 24
+iterações.A complexidade deste método encontra-se no cáculo de \emph{n!}.
+Podemos observar na Figura~\ref{eq:phi} a representação gráfica da convegência
+entre a série e $e^5$. 
+
+\begin{figure}[H] \centering
+	\includegraphics[scale=.75]{ex5.png} 
+\caption{Convergência de $e^5$ em 40 iterações}
+\label{ex5} 
+\end{figure}
+
 \subsection{Erdős-Borwein}
 
 A constante de Erdős-Borwein é a soma dos inversos multiplicativos dos números
