@@ -295,6 +295,7 @@ apesar de sua complexidade estar escondida na função $sin$. O método está
 descrito a seguir:
 
 \begin{equation}
+\label{magic_equation}
 P(n+1) = P(n) + sin(P(n))
 \end{equation}
 
@@ -446,7 +447,15 @@ end
 
 \end{lstlisting}
 
-%\nocite{*}
+\section{Conclusão}
+
+Métodos iterativos são extremamente importantes dentro da computação, pois eles
+nos permitem aproximar números irracionais, com precisão aceitável a ser usada
+no sistema de ponto flutuante dentro dos computadores. Observamos que diferentes
+métodos possuem diferentes características que podem complicar ou simplificar em
+alguns aspectos. Como na equação~\ref{magic_equation}, onde aparenta ser
+simples, mas a complexidade está escondida dentro da função \emph{sin}, que por
+sua vez, é implementada utilizando série de taylor por trás.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
