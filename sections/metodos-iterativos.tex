@@ -1,11 +1,10 @@
 \section{Métodos Iterativos}
 
-Um \textbf{método iterativo} é um procedimento matemático para resolução de
-equações que gera uma sequência de aproximações, que servem como solução para
-uma classe de problemas. Uma implementação específica de um método iterativo,
-incluindo sua condição de parada, é um algoritmo. Um método iterativo é
-considerado \textbf{convergente} se a sequência de valores geradas converge para
-uma dada aproximação inicial.
+Um \textbf{método iterativo} é um procedimento matemático que gera uma
+sequência de aproximações, e quando esta sequenia é convergente esta
+aproximação pode ser aceita como a solução para uma classe de problemas. Um
+método iterativo é considerado \textbf{convergente} se a sequência de valores
+geradas converge para uma dada aproximação inicial.
 
 Para uma definição mais teórica, o seguinte autor define:
 
@@ -26,13 +25,16 @@ Contraste, \textbf{métodos diretos} tentam resolver o problema em uma sequênci
 Um método iterativo é formado por quatro partes:~\cite{claudio2000calculo}
 
 \begin{enumerate}[a)]
-	\item Estimativa inicial: uma ou mais aproximações para a raiz desejada.
-    \item Atualização: uma fórmula que atualize a solução aproximada.
-    \item Critério de parada: uma forma de estabelecer quando parar o processo iterativo em qualquer caso.
-    \item Estimador de exatidão: está associado ao critério de parada e provê uma estimativa do erro cometido.
-\end{enumerate}
 
-\newpage
+	\item Estimativa inicial: uma ou mais aproximações para a raiz desejada.
+
+    \item Atualização: uma fórmula que atualize a solução aproximada.
+
+    \item Critério de parada: uma forma de estabelecer quando parar o processo iterativo em qualquer caso.
+
+    \item Estimador de exatidão: está associado ao critério de parada e provê uma estimativa do erro cometido.
+
+\end{enumerate}
 
 \section{Exercícios}
 %PI = http://mathforum.org/library/drmath/view/65244.html
@@ -55,6 +57,7 @@ Nessa seção vamos encontrar números irracionais conhecidos utilizando método
 
 	Frações conitinuadas são formas de representar números reais de tal forma
 	que a expressão básica tem o seguinte formato:
+
 	\begin{equation}\label{eq:phi}
 		a_0 + \frac{b_0}{a_1 + \frac{b_1}{a_n + \dots}}
 	\end{equation}
@@ -62,68 +65,7 @@ Nessa seção vamos encontrar números irracionais conhecidos utilizando método
 	Para calcular o $\phi$ devemos substituir \emph{a} e \emph{b} por 1. Na
 	Fração~\ref{eq:phi}.
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-
-		\hline
-		Iteração & $x$ & Iteração & $x$ \\
-		\hline
-		1 & 2.00000000000000000000 & 26 & 1.61803398873830306393 \\
-		\hline
-		2 & 1.50000000000000000000 & 27 & 1.61803398875432247195 \\
-		\hline
-		3 & 1.66666666666666651864 & 28 & 1.61803398874820381081 \\
-		\hline
-		4 & 1.60000000000000008882 & 29 & 1.61803398875054060824 \\
-		\hline
-		5 & 1.62500000000000000000 & 30 & 1.61803398874964821097 \\
-		\hline
-		6 & 1.61538461538461541878 & 31 & 1.61803398874998904944 \\
-		\hline
-		7 & 1.61904761904761906877 & 32 & 1.61803398874985893130 \\
-		\hline
-		8 & 1.61764705882352943789 & 33 & 1.61803398874990866929 \\
-		\hline
-		9 & 1.61818181818181816567 & 34 & 1.61803398874988957346 \\
-		\hline
-		10 & 1.61797752808988759554 & 35 & 1.61803398874989690093 \\
-		\hline
-		11 & 1.61805555555555558023 & 36 & 1.61803398874989401435 \\
-		\hline
-		12 & 1.61802575107296142676 & 37 & 1.61803398874989512457 \\
-		\hline
-		13 & 1.61803713527851456000 & 38 & 1.61803398874989490253 \\
-		\hline
-		14 & 1.61803278688524576623 & 39 & 1.61803398874989490253 \\
-		\hline
-		15 & 1.61803444782168193150 & 40 & 1.61803398874989490253 \\
-		\hline
-		16 & 1.61803381340012508716 & 41 & 1.61803398874989490253 \\
-		\hline
-		17 & 1.61803405572755432118 & 42 & 1.61803398874989490253 \\
-		\hline
-		18 & 1.61803396316670644595 & 43 & 1.61803398874989490253 \\
-		\hline
-		19 & 1.61803399852180351814 & 44 & 1.61803398874989490253 \\
-		\hline
-		20 & 1.61803398501735795634 & 45 & 1.61803398874989490253 \\
-		\hline
-		21 & 1.61803399017559712547 & 46 & 1.61803398874989490253 \\
-		\hline
-		22 & 1.61803398820532517988 & 47 & 1.61803398874989490253 \\
-		\hline
-		23 & 1.61803398895790184753 & 48 & 1.61803398874989490253 \\
-		\hline
-		24 & 1.61803398867044334608 & 49 & 1.61803398874989490253 \\
-		\hline
-		25 & 1.61803398878024262686 & 50 & 1.61803398874989490253 \\
-		\hline
-
-	\end{tabular}
-	\label{golden_fraction}
-	\caption{Convergência do número de ouro pelo método de frações continuadas}
-\end{table}
+	\input{./tables/phi.tex}
 
 Como fica ilustrado na tabela, o número já se estabiliza antes mesmo de
 chegarmos à 50 iterações.
@@ -160,28 +102,7 @@ método, então, pode ser iterado.
 Analizando novamente o número de ouro, mas com o método de newton, um número
 muito menor de iterações é observado.
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		Iteração & $x$ & erro \\
-		\hline
-		1 & 1.66666666666666674068 & 0.33333333333333325932 \\
-		\hline
-		2 & 1.61904761904761906877 & 0.04761904761904767192 \\
-		\hline
-		3 & 1.61803444782168193150 & 0.00101317122593713727 \\
-		\hline
-		4 & 1.61803398874998904944 & 0.00000045907169288206 \\
-		\hline
-		5 & 1.61803398874989490253 & 0.00000000000009414691 \\
-		\hline
-		6 & 1.61803398874989490253 & 0.00000000000000000000 \\
-		\hline
-	 \end{tabular}
-	\label{golden_newton}
-	\caption{Convergência do número de ouro pelo método de newton}
-\end{table}
+\input{./tables/phi-newton.tex}
 
 Isso pode ser observado no gráfico abaixo.
 
@@ -191,8 +112,6 @@ Isso pode ser observado no gráfico abaixo.
     \caption{Convergência do número de ouro pelo método de newton}
     \label{golden_newton}
 \end{figure}
-
-\newpage
 
 O método iterativo utilizado foi descrito pelo seguinte código:
 
