@@ -488,6 +488,26 @@ entre a série e $e^5$.
 \label{ex5} 
 \end{figure}
 
+Utilizamos o Algoritmo exponential implementado como mostrado a seguir,
+que retorna uma matriz de forma que cada coluna representa uma iteração e
+a primeira linha o valor calculado, a segunda o valor de $e^5$ e a
+tereceira linha é utilizada para guardar a diferença entre $e^5$ o valor
+calculado na iteração.
+
+\begin{lstlisting}
+function [ex] = exponential(x, iteration)
+	ex2 = e^x;
+	ex(1,1) = 1;
+	ex(2,1) = ex2;
+	ex(3,1) = ex2 - ex(1,1);
+	for k=2:iteration
+		ex(1,k) = ex(1,k-1) + (power(x,k-1) / factorial(k-1));
+		ex(2,k) = ex2;
+		ex(3,k) = ex2 - ex(1,k);
+	end
+end
+\end{lstlisting}
+
 \subsection{Erdős-Borwein}
 
 A constante de Erdős-Borwein é a soma dos inversos multiplicativos dos números
