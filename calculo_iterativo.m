@@ -1,4 +1,4 @@
-output_precision(60)
+format long g
 function [x] = newton( f, df, x0, tol, nmax)
 	f = inline(f);
 	df = inline(df);
@@ -12,12 +12,29 @@ function [x] = newton( f, df, x0, tol, nmax)
 	end
 end
 
-function [x] =  phi_frac(iteration=1)
-	aux = 1;
+function [x] = phi_frac(iteration=1, error)
+	phi = (1 + sqrt(5))/2
+	aux = 1
 	for i= 1:iteration
-		aux = double(1 + 1/aux);
-		x(i) = aux;
+		aux = double(1 + 1/aux)
+		x(1,i) = i
+		x(2,i) = aux
+		x(3,i) = phi
+		x(4,i) =abs(phi - aux)
 	end
+	file = fopen('./tables/phi.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação &  PHI & Erro \\\\ \n' ,x);
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14f &  %.14f & %.14f \\\\ \n \\hline\n',x);
+	fprintf(file, '\\end{tabular}')
+	fprintf(file, '\\label{table:phi-frac}')
+	fprintf(file, '\\caption{Convergência do número de ouro pelo método de frações continuadas}')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
 
 function [pif, pi_vec] = pi_it(iteration)
