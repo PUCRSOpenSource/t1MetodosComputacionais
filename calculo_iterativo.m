@@ -12,7 +12,7 @@ function [x] = newton( f, df, x0, tol, nmax)
 	end
 end
 
-function phi_frac(iteration=1, err)
+function phi_frac(iteration=1, err=1*10^-1)
 	phi = (1 + sqrt(5))/2
 	aux = 1
 	x(1,1) = 1
@@ -21,8 +21,8 @@ function phi_frac(iteration=1, err)
 	x(4,1) = abs(phi - aux)
 
 	i = 2
-	while i <= iteration and  (err > x(4, i-1))
-		aux = double(1 + 1/aux)
+	while (i <= iteration and  err > x(4, i-1)
+		)		aux = double(1 + 1/aux)
 		x(1,i) = i
 		x(2,i) = aux
 		x(3,i) = phi
