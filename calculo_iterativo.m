@@ -12,7 +12,7 @@ function [x] = newton( f, df, x0, tol, nmax)
 	end
 end
 
-function phi_frac(iteration=1, err=1*10^-1)
+function phi_frac(iteration=10, err=1*10^-1)
 	phi = (1 + sqrt(5))/2
 	aux = 1
 	x(1,1) = 1
@@ -76,7 +76,7 @@ function pi_sin(iteration=1, err=1*10^-1)
 	fclose(file)
 end
 
-function pi_pow(iteration, err)
+function pi_leibniz(iteration, err)
 	x(1,1) = 1
 	x(2,1) = 1
 	x(3,1) = pi
@@ -85,7 +85,7 @@ function pi_pow(iteration, err)
 	i=2
 	while xor(i <= iteration,  err > x(4, i-1))
 		x(1,i) = i
-		x(2,i) = x(i-1) + power(-1, mod(i+1,2)) * 4/(2*i - 1)
+		x(2,i) = x(i-1) + 2/((4*(i-1)-1)*4(i-1)+3)
 		x(3,i) = pi
 		x(4,i) = abs(pi - x(i-1))
 		i++
