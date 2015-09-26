@@ -76,12 +76,14 @@ function pi_sin(iteration=1, err=1*10^-1)
 	fclose(file)
 end
 
-function pi_pow(iteration)
+function pi_pow(iteration, err)
 	x(1,1) = 1
 	x(2,1) = 4
 	x(3,1) = pi
 	x(4,1) = abs(pi - x(2,1))
-	for i = 2:iteration
+
+	i=2
+	while xor(i <= iteration,  err > x(4, i-1))
 		x(1,i) = i
 		x(2,i) = x(i-1) + power(-1, mod(i+1,2)) * 4/(2*i - 1)
 		x(3,i) = pi
@@ -103,7 +105,7 @@ function pi_pow(iteration)
 	fclose(file)
 end
 
-function [ef, e_vec] = euler_taylor(iteration)
+function euler_taylor(iteration)
 	ef(1) = 1;
 	e_vec(1) = e;
 	for i = 2:iteration
