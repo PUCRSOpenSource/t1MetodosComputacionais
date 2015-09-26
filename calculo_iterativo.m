@@ -78,7 +78,7 @@ end
 
 function pi_pow(iteration, err)
 	x(1,1) = 1
-	x(2,1) = 4
+	x(2,1) = 1
 	x(3,1) = pi
 	x(4,1) = abs(pi - x(2,1))
 
@@ -99,26 +99,66 @@ function pi_pow(iteration, err)
 	fprintf(file, '\\hline \n')
 	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
 	fprintf(file, '\\end{tabular}\n')
-	fprintf(file, '\\label{table:pi-sin}\n')
+	fprintf(file, '\\label{table:pi-pow}\n')
 	fprintf(file, '\\caption{Convergência de pi utilizando funções trigonométricas}\n')
 	fprintf(file, '\\end{table}')
 	fclose(file)
 end
 
 function euler_taylor(iteration)
-	ef(1) = 1;
-	e_vec(1) = e;
-	for i = 2:iteration
-		ef(i) =ef(i-1) + 1/factorial(i-1);
-		e_vec(i) = e;
+	x(1,1) = 1
+	x(2,1) = 1
+	x(3,1) = e
+	x(4,1) = abs(e - x(2,1))
+	while xor(i <= iteration,  err > x(4, i-1))
+		x(1,i) = i
+		x(2,i) = x(i-1) + 1/factorial(i-1)
+		x(3,i) = e
+		x(4,i) = abs(e - x(i-1))
+		i++
 	end
+	file = fopen('./tables/euler-taylor.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação & e & Erro \\\\ \n');
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
+	fprintf(file, '\\end{tabular}\n')
+	fprintf(file, '\\label{table:euler-taylor}\n')
+	fprintf(file, '\\caption{Convergência de euler utilizando série de Taylor}\n')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
 
 function [er] = erdos(iteration)
-	er(1) = 1;
-	for i=2:iteration
+	x(1,1) = 1
+	x(2,1) = 1
+	x(3,1) = e
+	x(4,1) = abs(e - x(2,1))
+	while xor(i <= iteration,  err > x(4, i-1))
+		x(1,i) = i
+		x(2,i) = x(i-1) + 1/factorial(i-1)
+		x(3,i) = e
+		x(4,i) = abs(e - x(i-1))
+		i++
+
 		er(i) = er(i-1) + (1 / ((2^i)-1));
 	end
+	file = fopen('./tables/erdos.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação & Erdos & Erro \\\\ \n');
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
+	fprintf(file, '\\end{tabular}\n')
+	fprintf(file, '\\label{table:erdos}\n')
+	fprintf(file, '\\caption{Convergência de euler utilizando série de Taylor}\n')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
 
 function [ex] = exponential(x, iteration)
@@ -126,9 +166,30 @@ function [ex] = exponential(x, iteration)
 	ex(1,1) = 1;
 	ex(2,1) = ex2;
 	ex(3,1) = ex2 - ex(1,1);
-	for k=2:iteration
+	x(1,1) = 1
+	x(2,1) = 1
+	x(3,1) = e^x
+	x(4,1) = abs(e^x - x(2,1))
+
+	i=2
+	while xor(i <= iteration,  err > x(4, i-1))
 		ex(1,k) = ex(1,k-1) + (power(x,k-1) / factorial(k-1));
 		ex(2,k) = ex2;
 		ex(3,k) = ex2 - ex(1,k);
+
+
 	end
+	file = fopen('./tables/exponential.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação & $e^x$ & Erro \\\\ \n');
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
+	fprintf(file, '\\end{tabular}\n')
+	fprintf(file, '\\label{table:erdos}\n')
+	fprintf(file, '\\caption{Convergência de $e^x$ utilizando série de Taylor}\n')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
