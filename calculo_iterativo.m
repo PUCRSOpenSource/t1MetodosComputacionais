@@ -1,4 +1,4 @@
-format long g
+format long e
 function [x] = newton( f, df, x0, tol, nmax)
 	f = inline(f);
 	df = inline(df);
@@ -45,23 +45,62 @@ function phi_frac(iteration=1, err=1*10^-1)
 	fclose(file)
 end
 
-function [pif, pi_vec] = pi_it(iteration)
-	pif(1) = 3 + sin(3);
-	pi_vec(1) = pi
-	for i = 2:iteration
-		pif(i) = pif(i-1) + sin(pif(i-1));
-		pi_vec(i) = pi;
-		aux = pif(i);
+function pi_sin(iteration=1, err=1*10^-1)
+	
+	x(1,1) = 1
+	x(2,1) = 3 + sin(3)
+	x(3,1) = pi
+	x(4,1) = abs(pi - x(2,1))
+
+	i = 2
+	while xor(i <= iteration,  err > x(4, i-1))
+		x(1,i) = i
+		x(2,i) = x(i-1) + sin(x(i-1))
+		x(3,i) = pi
+		x(4,i) = abs(pi - x(i-1))
+		i++
 	end
+
+	file = fopen('./tables/pi-sin.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação & pi & Erro \\\\ \n');
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
+	fprintf(file, '\\end{tabular}\n')
+	fprintf(file, '\\label{table:pi-sin}\n')
+	fprintf(file, '\\caption{Convergência de pi utilizando funções trigonométricas}\n')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
-function [pif, pi_vec] = pi_it2(iteration)
-	pif(1) = 4;
-	pi_vec(1) = pi
+
+function pi_pow(iteration)
+	x(1,1) = 1
+	x(2,1) = 4
+	x(3,1) = pi
+	x(4,1) = abs(pi - x(2,1))
 	for i = 2:iteration
-		pif(i) = pif(i-1) + power(-1, mod(i+1,2)) * 4/(2*i - 1);
-		pi_vec(i) = pi;
-		aux = pif(i);
+		x(1,i) = i
+		x(2,i) = x(i-1) + power(-1, mod(i+1,2)) * 4/(2*i - 1)
+		x(3,i) = pi
+		x(4,i) = abs(pi - x(i-1))
+		i++
 	end
+	file = fopen('./tables/pi-pow.tex', 'w')
+	fprintf(file, '\\begin{table}[H]\n')
+	fprintf(file, '\\centering \n')
+	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
+	fprintf(file, '\\hline \n')
+	fprintf(file,'Iteração & Aproximação & pi & Erro \\\\ \n');
+	fprintf(file, '\\hline \n')
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
+	fprintf(file, '\\end{tabular}\n')
+	fprintf(file, '\\label{table:pi-sin}\n')
+	fprintf(file, '\\caption{Convergência de pi utilizando funções trigonométricas}\n')
+	fprintf(file, '\\end{table}')
+	fclose(file)
 end
 
 function [ef, e_vec] = euler_taylor(iteration)
