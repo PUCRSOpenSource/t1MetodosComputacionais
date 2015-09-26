@@ -35,15 +35,14 @@ function phi_frac(iteration=1, err=1*10^-1)
 	fprintf(file, '\\centering \n')
 	fprintf(file, '\\begin{tabular}{|c|c|c|c|}\n')
 	fprintf(file, '\\hline \n')
-	fprintf(file,'Iteração & Aproximação &  PHI & Erro \\\\ \n');
+	fprintf(file,'Iteração & Aproximação & PHI & Erro \\\\ \n');
 	fprintf(file, '\\hline \n')
-	fprintf(file,'%d & %.14f &  %.14f & %.14f \\\\ \n\\hline\n',x);
+	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
 	fprintf(file, '\\end{tabular}\n')
 	fprintf(file, '\\label{table:phi-frac}\n')
 	fprintf(file, '\\caption{Convergência do número de ouro pelo método de frações continuadas}\n')
 	fprintf(file, '\\end{table}')
 	fclose(file)
-
 end
 
 function [pif, pi_vec] = pi_it(iteration)
