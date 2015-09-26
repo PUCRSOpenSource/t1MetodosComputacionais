@@ -12,7 +12,7 @@ function [x] = newton( f, df, x0, tol, nmax)
 	end
 end
 
-function [x] = phi_frac(iteration=1, err)
+function phi_frac(iteration=1, err)
 	phi = (1 + sqrt(5))/2
 	aux = 1
 	x(1,1) = 1
