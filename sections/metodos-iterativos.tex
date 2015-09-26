@@ -1,40 +1,40 @@
 \section{Métodos Iterativos}
 
-Um \textbf{método iterativo} é um procedimento matemático que gera uma
-sequência de aproximações, e quando esta sequenia é convergente esta
-aproximação pode ser aceita como a solução para uma classe de problemas. Um
-método iterativo é considerado \textbf{convergente} se a sequência de valores
-geradas converge para uma dada aproximação inicial.
+	Um \textbf{método iterativo} é um procedimento matemático que gera uma
+	sequência de aproximações, e quando esta sequenia é convergente esta
+	aproximação pode ser aceita como a solução para uma classe de problemas. Um
+	método iterativo é considerado \textbf{convergente} se a sequência de valores
+	geradas converge para uma dada aproximação inicial.
 
-Para uma definição mais teórica, o seguinte autor define:
+	Para uma definição mais teórica, o seguinte autor define:
 
-\begin{quotation}
+	\begin{quotation}
 
-``Um método iterativo consiste em repetir uma determinada operação um certo número
-de vezes até que nos seja fornecida uma aproximação, que satisfaça as condições
-do problema e, para tal, a sequência de valores deve ser
-convergente.''\cite{batista2014metodos}
+		``Um método iterativo consiste em repetir uma determinada operação um
+		certo número de vezes até que nos seja fornecida uma aproximação, que
+		satisfaça as condições do problema e, para tal, a sequência de valores
+		deve ser convergente.''\cite{batista2014metodos}
 
-\end{quotation}
+	\end{quotation}
 
-Nos problemas do tipo encontre a raíz da equação, um método iterativo usa
-uma suposição inicial para gerar sucessivas aproximações à uma solução. Em
-Contraste, \textbf{métodos diretos} tentam resolver o problema em uma sequência
-\emph{finita} de operações.
+	Nos problemas do tipo encontre a raíz da equação, um método iterativo usa
+	uma suposição inicial para gerar sucessivas aproximações à uma solução. Em
+	Contraste, \textbf{métodos diretos} tentam resolver o problema em uma sequência
+	\emph{finita} de operações.
 
-Um método iterativo é formado por quatro partes:~\cite{claudio2000calculo}
+	Um método iterativo é formado por quatro partes:~\cite{claudio2000calculo}
 
-\begin{enumerate}[a)]
+	\begin{enumerate}[a)]
 
-	\item Estimativa inicial: uma ou mais aproximações para a raiz desejada.
+		\item Estimativa inicial: uma ou mais aproximações para a raiz desejada.
 
-    \item Atualização: uma fórmula que atualize a solução aproximada.
+		\item Atualização: uma fórmula que atualize a solução aproximada.
 
-    \item Critério de parada: uma forma de estabelecer quando parar o processo iterativo em qualquer caso.
+		\item Critério de parada: uma forma de estabelecer quando parar o processo iterativo em qualquer caso.
 
-    \item Estimador de exatidão: está associado ao critério de parada e provê uma estimativa do erro cometido.
+		\item Estimador de exatidão: está associado ao critério de parada e provê uma estimativa do erro cometido.
 
-\end{enumerate}
+	\end{enumerate}
 
 	Nas proximas seções serão apresentados as constantes(ou número, arruma
 	isso) irracionais utilizando métodos iterativos, bem como a análise de
@@ -45,6 +45,11 @@ Um método iterativo é formado por quatro partes:~\cite{claudio2000calculo}
 	executamos é informado o núemro de maximo de iterações e o erro tolerável,
 	quando uma das condições é satisfeita partimso para a análise dos
 	resultados obtidos.
+
+	Os algoritmos utilizados para a extração dos resultados foram escritos e
+	executados no octave, pois exite no grupo um certa familiaridade com a
+	ferramenta e para fins de visualização de dados de forma que as tabelas que
+
 
 \subsection{Número de Ouro}
 
