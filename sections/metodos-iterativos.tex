@@ -53,23 +53,12 @@
 	
 	\subsection{Número de Ouro}
 		
-		O número de ouro, também denotada pela letra grega $\phi$ que é
-		definida algebrigamente como pode ser observado na
-		Equação~\ref{eq:phi-algebrico}
+		O número de ouro, também denotada pela letra grega $\phi$ e é obitdo a
+		partir da raiz positiva da Equação~\ref{eq:phi}
 
-		\begin{figure}[H]
-			\centering
-			\begin{equation}
-				\frac{a+b}{b} = \frac{a}{b} = \phi
-			\end{equation}
-			\label{eq:phi-algebrico}
-			\caption{Definição algérbrica de $\phi$}
-		\end{figure}
-
-
-		
 		\begin{equation}
 			x^2-x-1
+		\label{eq:phi}
 		\end{equation}
 
 		Existem algums algoritmos para realizar a aproximação neste artigo,
@@ -82,17 +71,18 @@
 			Frações conitinuadas são formas de representar números reais de tal
 			forma que a expressão básica tem o seguinte formato:
 
-			\begin{equation}\label{eq:phi}
+			\begin{equation}
+			\label{eq:phi-frac}
 				a_0 + \frac{b_0}{a_1 + \frac{b_1}{a_n + \dots}}
 			\end{equation}
 
-			Para calcular o $\phi$ devemos substituir \emph{a} e \emph{b} por 1.
-			Na Fração~\ref{eq:phi}.
+			Para calcular o $\phi$ devemos substituir \emph{a} e \emph{b}
+			por 1. Na Fração~\ref{eq:phi}. A Tabela~\ref{table:phi-frac}
+			foi obtida utlizando o método de frações continuadas de forma
+			que o número máximo de iterações  
 
 			\input{./tables/phi.tex}
 
-			Como fica ilustrado na tabela, o número já se estabiliza antes mesmo
-			de chegarmos à 50 iterações.
 
 			\begin{figure}[H]
 				\centering
