@@ -53,7 +53,7 @@
 	
 	\subsection{Número de Ouro}
 		
-		O número de ouro, também denotada pela letra grega $\phi$ e é obitdo a
+		O número de ouro, também denotada pela letra grega $\phi$, é obitdo a
 		partir da raiz positiva da Equação~\ref{eq:phi}
 
 		\begin{equation}
@@ -61,9 +61,9 @@
 		\label{eq:phi}
 		\end{equation}
 
-		Existem algums algoritmos para realizar a aproximação neste artigo,
+		Existem alguns algoritmos para se aproximar de $\phi$ nesse artigo,
 		sendo duas destas formas  abordadas. A primeira utilizando frações
-		continuas e o segundo calculando as raizaes da equação utiizando método
+		continuas e o segundo calculando as raizaes da equação utilizando método
 		de newton.
 
 		\subsubsection{Frações Continuadas}
@@ -77,10 +77,10 @@
 			\end{equation}
 
 			Para calcular o $\phi$ devemos substituir \emph{a} e \emph{b} por
-			\emph{1} na Fração~\ref{eq:phi}. A Tabela~\ref{table:phi-frac} foi
+			\emph{1} na equação~\ref{eq:phi}. A Tabela~\ref{table:phi-frac} foi
 			obtida utlizando o método de frações continuadas de forma que o
 			número máximo de iterações é 50 e o erro aceitável é $10^{-15}$. Onde
-			podemos observar que a partir da iteração \emph{39} o erro foi
+			podemos observar que a partir da iteração \emph{37} o erro foi
 			menor do que a tolerancia.
 
 			\input{./tables/phi.tex}
@@ -99,22 +99,22 @@
 			\begin{lstlisting}
 
 			function phi_frac(iteration, err)
-			phi = (1 + sqrt(5))/2
-			aux = 1
-			x(1,1) = 1
-			x(2,1) = aux
-			x(3,1) = phi
-			x(4,1) = abs(phi - aux)
+				phi = (1 + sqrt(5))/2
+				aux = 1
+				x(1,1) = 1
+				x(2,1) = aux
+				x(3,1) = phi
+				x(4,1) = abs(phi - aux)
 
-			i = 2
-			while xor(i <= iteration,  err > x(4, i-1))
-				aux = double(1 + 1/aux)
-				x(1,i) = i
-				x(2,i) = aux
-				x(3,i) = phi
-				x(4,i) = abs(phi - aux)
-				i++
-			end
+				i = 2
+				while xor(i <= iteration,  err > x(4, i-1))
+					aux = double(1 + 1/aux)
+					x(1,i) = i
+					x(2,i) = aux
+					x(3,i) = phi
+					x(4,i) = abs(phi - aux)
+					i++
+				end
 
 			end
 
@@ -122,7 +122,7 @@
 
 		\subsubsection{Método de Newton}
 
-			A ideia do método de Newton é a partir de um valor inicial
+			A ideia do método de Newton é: A partir de um valor inicial
 			arbitrário, então a função é aproximada por sua reta tangente. O $x$
 			que intercepta a reta e a função é computado, e ele será uma melhor
 			aproximação que o chute inicial. O método, então, pode ser iterado.
@@ -141,7 +141,7 @@
 				\label{golden_newton}
 			\end{figure}
 
-			O método iterativo utilizado foi descrito pelo seguinte código:
+			Os valores foram obtidos a partir do algoritmo abaixo:
 
 			\begin{lstlisting}
 
@@ -172,12 +172,20 @@
 
 			\begin{equation}
 			\label{magic_equation}
-				P(n+1) = P(n) + sin(P(n))
+				P(n) =
+				\begin{cases}
+					3 + sin (3) & \quad \text{se } n \text{\ for } 1\\
+					P(n-1) + sin(P(n-1)) & \quad \text{se } n > 1\\
+				\end{cases}
 			\end{equation}
 
-			$P(n)$ seria a aproximação de $\pi$ na iteração $n$. Esse método
-			consegue convergir para $\pi$ com um número muito baixo de
-			iterações.
+			$P(n)$ seria a aproximação de $\pi$ na iteração $n$. Na primeira
+			iteração, precisamos oferecer uma aproximação inicial. No nosso caso
+			utilizamos \emph{3}, como podemos ver na
+			equação~\ref{magic_equation}.
+			
+			Esse método consegue convergir para $\pi$ com um número muito baixo
+			de iterações.
 
 			\input{./tables/pi-sin.tex}
 
@@ -190,7 +198,7 @@
 				\label{fig:pi-magic}
 			\end{figure}
 
-			O método iterativo utilizado foi descrito pelo seguinte código:
+			Os valores foram obtidos a partir do algoritmo abaixo:
 
 			\begin{lstlisting}
 
@@ -211,8 +219,8 @@
 		A função $e^x$ é um função exponencial cuja base é o número de Euler,
 		também conhecida como função exponencial natural.
 
-		Para o calculo da da função utilizamos a seguinte série de Taylor
-		
+		Para o cálculo da da função utilizamos a seguinte série de Taylor
+
 		\begin{equation}
 			\sum_{n=1}^{n} = \frac{x^n}{n!}
 		\end{equation}
@@ -223,7 +231,7 @@
 		\input{./tables/exponential.tex}
 
 		Utilizando a série de Taylor foi percebido que o método converge após 24
-		iterações.A complexidade deste método encontra-se no cáculo de
+		iterações.A complexidade desse método encontra-se no cáculo de
 		\emph{n!}.  Podemos observar na Figura~\ref{eq:phi} a representação
 		gráfica da convegência entre a série e $e^5$. 
 
@@ -262,7 +270,8 @@
 			E = \displaystyle\sum_{n=1}^{\infty} \frac{1}{2^n-1} \approx 1.606695152415291763\dots
 		\end{equation}
 
-		Executando no \emph{octave}, obtemos os seguintes resultados:
+		Executando no ambiente matemático \emph{octave}, obtemos os seguintes
+		resultados:
 
 		\input{./tables/erdos.tex}
 
