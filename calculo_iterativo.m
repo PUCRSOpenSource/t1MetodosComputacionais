@@ -155,16 +155,16 @@ function euler_taylor(iteration, err)
 end
 
 function erdos(iteration, err)
+	erds   = 1.6066951524152917
 	x(1,1) = 1
 	x(2,1) = 1
-	x(3,1) = abs(1.60669515241529176378330152319092458048057967150575643577807955369 - x(2,1))
+	x(3,1) = abs(erds - x(2,1))
 
 	i=2
 	while xor(i <= iteration,  err > x(3, i-1))
 		x(1,i) = i
-		x(2,i) = x(i-1) + 1/factorial(i-1)
-		x(2,i) = x(i-1) + (1 / ((2^i)-1));
-		x(3,i) = abs(x(2,i) - x(2,i-1))
+		x(2,i) = x(2,i-1) + (1 / ((2^i)-1))
+		x(3,i) = abs(erds - x(2,i-1))
 		i++
 	end
 	file = fopen('./tables/erdos.tex', 'w')
