@@ -186,18 +186,14 @@ function exponential(p, iteration, err)
 	x(1,1) = 1
 	x(2,1) = 1
 	x(3,1) = e^p
-	x(4,1) = abs(e^p - x(3,1))
+	x(4,1) = abs(e^p - x(2,1))
 
 	i=2
 	while xor(i <= iteration,  err > x(4, i-1))
 		x(1,i) = i
-		x(2,i) = x(2,i-1) + (power(x,i-1) / factorial(i-1))
-		x(3,i) = e^x
-		x(4,i) = abs(x(3,i) - x(i-1))
-
-		x(2,i) = x(i-1) + 2/((4*(i-1)-1)*4(i-1)+3)
-		x(3,i) = pi
-		x(4,i) = abs(pi - x(i-1))
+		x(2,i) = x(2,i-1) + (power(p,i-1)) / (factorial(i-1))
+		x(3,i) = e^p
+		x(4,i) = abs(x(3,i) - x(2,i-1))
 		i++
 
 	end
