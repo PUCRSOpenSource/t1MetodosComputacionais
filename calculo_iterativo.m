@@ -8,9 +8,10 @@ function newton( f, df, x0, tol, nmax)
 	x(3,1) = phi
 	x(4,1) = abs(x(1)-x0)
 	i = 2
-	while xor(i <= nmax, e(2,i-1) > tol)
+	while xor(i <= nmax, tol > x(4,i-1))
 		 x(1,i) = i
-		 x(2,i) = aux
+		 x(2,i) = x(2,i-1) - f(x(2,i-1))/df(x(2,i-1));
+		 %x(2,i) = aux
 		 x(3,i) = phi
 		 x(4,i) = abs(x(2,i)-x(2,i-1))
 		 i++
@@ -215,9 +216,9 @@ function exponential(p, iteration, err)
 	fclose(file)
 end
 
-newton('x^2 - x - 1', '2*x - 1', 30, 10^-15, 50)
-phi_frac(50, 10^-15)
-pi_sin(50, 10^-15)
-euler_taylor(50, 10^-15)
-exponential(5, 50, 10^-15)
-erdos(50, 10^-15)
+%newton('x^2 - x - 1', '2*x - 1', 30, 10^-15, 50)
+%phi_frac(50, 10^-15)
+%pi_sin(50, 10^-15)
+%euler_taylor(50, 10^-15)
+%exponential(5, 50, 10^-15)
+%erdos(50, 10^-15)
