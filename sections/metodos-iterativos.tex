@@ -49,10 +49,10 @@
 
 	Os algoritmos utilizados para a extração dos resultados foram escritos e
 	executados no ambiente matemático \emph{octave}, pois o grupo possui uma
-	prévia familiaridade com a ferramenta. 
-	
+	prévia familiaridade com a ferramenta.
+
 	\subsection{Número de Ouro}
-		
+
 		O número de ouro, também denotada pela letra grega $\phi$, é
 		obitdo a partir da raiz positiva da Equação~\ref{eq:phi}
 
@@ -141,6 +141,18 @@
 
 			\end{lstlisting}
 
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{phi2.png}
+				\caption{Comparativo da convergência entre método de newton(pontilhado) com frações continuadas(continuo)}
+				\label{fig:phi-graphic}
+			\end{figure}
+
+			Para gerarmos a tabela de resultados e o gráfico, foi usado o número
+			\emph{6} como aproximação inicial no método de newton. No método de
+			frações continuadas foi dado um limite de iterações de \emph{30} e
+			em ambos os métodos o erro toleravel é de $10^{-12}$.
+
 	\subsection{Pi($\pi$)}
 
 		\subsubsection{Método Utilizando Funções Trigonométricas}
@@ -163,7 +175,7 @@
 			iteração, precisamos oferecer uma aproximação inicial. No nosso caso
 			utilizamos \emph{3}, como podemos ver na
 			equação~\ref{magic_equation}.
-			
+
 			Esse método consegue convergir para $\pi$ com um número muito baixo
 			de iterações.
 
@@ -174,7 +186,7 @@
 			\begin{lstlisting}
 
 				function pi_sin(iteration=1, err=1*10^-1)
-					
+
 					x(1,1) = 1
 					x(2,1) = 3 + sin(3)
 					x(3,1) = pi
@@ -203,8 +215,9 @@
 			\sum_{n=1}^{n} = \frac{x^n}{n!}
 		\end{equation}
 
-		Para exemplificar a foram realizadas 40 iteração para a seguinte função
-		$e^5$, e obtivemos os seguintes resultaodos:
+		Para gerarmos os resultados da Tabela~\ref{table:exponential},
+		utilizamos \emph{40} como limite máximo de iterações e $10^{-15}$ como erro
+		tolerável.
 
 		\input{./tables/exponential.tex}
 
