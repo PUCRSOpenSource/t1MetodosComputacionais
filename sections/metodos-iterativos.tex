@@ -53,18 +53,18 @@
 	
 	\subsection{Número de Ouro}
 		
-		O número de ouro, também denotada pela letra grega $\phi$, é obitdo a
-		partir da raiz positiva da Equação~\ref{eq:phi}
+		O número de ouro, também denotada pela letra grega $\phi$, é
+		obitdo a partir da raiz positiva da Equação~\ref{eq:phi}
 
 		\begin{equation}
 			x^2-x-1
 		\label{eq:phi}
 		\end{equation}
 
-		Existem alguns algoritmos para se aproximar de $\phi$ nesse artigo,
-		sendo duas destas formas  abordadas. A primeira utilizando frações
-		continuas e o segundo calculando as raizaes da equação utilizando método
-		de newton.
+		Existem alguns algoritmos para se aproximar de $\phi$ nesse
+		artigo, sendo duas destas formas  abordadas. A primeira utilizando
+		frações continuas e o segundo calculando as raízes da equação
+		utilizando método de newton.
 
 		\subsubsection{Frações Continuadas}
 
@@ -72,8 +72,8 @@
 			forma que a expressão básica tem o seguinte formato:
 
 			\begin{equation}
-			\label{eq:phi-frac}
 				a_0 + \frac{b_0}{a_1 + \frac{b_1}{a_n + \dots}}
+			\label{eq:phi-frac}
 			\end{equation}
 
 			Para calcular o $\phi$ devemos substituir \emph{a} e \emph{b} por
@@ -85,38 +85,28 @@
 
 			\input{./tables/phi.tex}
 
-
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=100mm]{golden_frac.png}
-				\caption{Convergência do número de ouro pelo método de frações continuadas}
-				\label{golden_frac}
-			\end{figure}
-
-
 			Os valores foram obtidos a partir do algoritmo abaixo:
 
 			\begin{lstlisting}
 
-			function phi_frac(iteration, err)
-				phi = (1 + sqrt(5))/2
-				aux = 1
-				x(1,1) = 1
-				x(2,1) = aux
-				x(3,1) = phi
-				x(4,1) = abs(phi - aux)
+				function phi_frac(iteration, err)
+					phi = (1 + sqrt(5))/2
+					aux = 1
+					x(1,1) = 1
+					x(2,1) = aux
+					x(3,1) = phi
+					x(4,1) = abs(phi - aux)
 
-				i = 2
-				while xor(i <= iteration,  err > x(4, i-1))
-					aux = double(1 + 1/aux)
-					x(1,i) = i
-					x(2,i) = aux
-					x(3,i) = phi
-					x(4,i) = abs(phi - aux)
-					i++
+					i = 2
+					while xor(i <= iteration,  err > x(4, i-1))
+						aux = double(1 + 1/aux)
+						x(1,i) = i
+						x(2,i) = aux
+						x(3,i) = phi
+						x(4,i) = abs(phi - aux)
+						i++
+					end
 				end
-
-			end
 
 			\end{lstlisting}
 
@@ -132,20 +122,11 @@
 
 			\input{./tables/phi-newton.tex}
 
-			Isso pode ser observado no gráfico abaixo.
-
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=100mm]{golden_newton.png}
-				\caption{Convergência do número de ouro pelo método de newton}
-				\label{golden_newton}
-			\end{figure}
-
 			Os valores foram obtidos a partir do algoritmo abaixo:
 
 			\begin{lstlisting}
 
-			function [x, ex] = newton( f, df, x0, tol, nmax)
+			function newton( f, df, x0, tol, nmax)
 				f = inline(f);
 				df = inline(df);
 				x(1) = double(x0 - (f(x0)/df(x0)));
@@ -188,28 +169,26 @@
 
 			\input{./tables/pi-sin.tex}
 
-			O seguinte gráfico foi gerado com a análise dos resultos:
-
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=100mm]{pi_magic.png}
-				\caption{Convergência do $\pi$}
-				\label{fig:pi-magic}
-			\end{figure}
-
 			Os valores foram obtidos a partir do algoritmo abaixo:
 
 			\begin{lstlisting}
 
-			function [pif, pi_vec] = pi_it(iteration)
-				pif(1) = 3 + sin(3);
-				pi_vec(1) = pi
-				for i = 2:iteration
-					pif(i) = pif(i-1) + sin(pif(i-1));
-					pi_vec(i) = pi;
-					aux = pif(i);
+				function pi_sin(iteration=1, err=1*10^-1)
+					
+					x(1,1) = 1
+					x(2,1) = 3 + sin(3)
+					x(3,1) = pi
+					x(4,1) = abs(pi - x(2,1))
+					i = 2
+					while xor(i <= iteration,  err > x(4, i-1))
+						x(1,i) = i
+						x(2,i) = x(i-1) + sin(x(i-1))
+						x(3,i) = pi
+						x(4,i) = abs(pi - x(i-1))
+						i++
+					end
+
 				end
-			end
 
 			\end{lstlisting}
 
@@ -231,14 +210,7 @@
 
 		Utilizando a série de Taylor foi percebido que o método converge após 24
 		iterações.A complexidade desse método encontra-se no cáculo de
-		\emph{n!}.  Podemos observar na Figura~\ref{eq:phi} a representação
-		gráfica da convegência entre a série e $e^5$. 
-
-		\begin{figure}[H] \centering
-			\includegraphics[scale=.75]{ex5.png} 
-		\caption{Convergência de $e^5$ em 40 iterações}
-		\label{ex5} 
-		\end{figure}
+		\emph{n!}.
 
 		Utilizamos o Algoritmo exponential implementado como mostrado a seguir,
 		que retorna uma matriz de forma que cada coluna representa uma iteração
@@ -247,15 +219,19 @@
 		calculado na iteração.
 
 		\begin{lstlisting}
-		function [ex] = exponential(x, iteration)
-			ex2 = e^x;
-			ex(1,1) = 1;
-			ex(2,1) = ex2;
-			ex(3,1) = ex2 - ex(1,1);
-			for k=2:iteration
-				ex(1,k) = ex(1,k-1) + (power(x,k-1) / factorial(k-1));
-				ex(2,k) = ex2;
-				ex(3,k) = ex2 - ex(1,k);
+		function exponential(p, iteration, err)
+			x(1,1) = 1
+			x(2,1) = 1
+			x(3,1) = e^p
+			x(4,1) = abs(e^p - x(2,1))
+
+			i=2
+			while xor(i <= iteration,  err > x(4, i-1))
+				x(1,i) = i
+				x(2,i) = x(2,i-1) + (power(p,i-1)) / (factorial(i-1))
+				x(3,i) = e^p
+				x(4,i) = abs(x(3,i) - x(2,i-1))
+				i++
 			end
 		end
 		\end{lstlisting}
@@ -274,25 +250,23 @@
 
 		\input{./tables/erdos.tex}
 
-		Podemos ver o número se estabilizando no seguinte gráfico,
-		construído a partir dos resultados da tabela.
-
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=100mm]{erdos.png}
-			\caption{Convergência do erdős-borwein em 50 iterações}
-			\label{erdos_graphic}
-		\end{figure}
-
 		A definição de $E$ foi codificada da seguinte maneira:
 
 		\begin{lstlisting}
 
-		function [er] = erdos(iteration)
-			er(1) = 1;
-			for i=2:iteration
-				er(i) = er(i-1) + (1 / ((2^i)-1));
+			function erdos(iteration, err)
+				erds   = 1.6066951524152917
+				x(1,1) = 1
+				x(2,1) = 1
+				x(3,1) = abs(erds - x(2,1))
+
+				i=2
+				while xor(i <= iteration,  err > x(3, i-1))
+					x(1,i) = i
+					x(2,i) = x(2,i-1) + (1 / ((2^i)-1))
+					x(3,i) = abs(erds - x(2,i-1))
+					i++
+				end
 			end
-		end
 
 		\end{lstlisting}

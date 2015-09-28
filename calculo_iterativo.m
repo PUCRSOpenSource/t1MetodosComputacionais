@@ -1,5 +1,5 @@
 format long e
-function newton( f, df, x0, tol, nmax)
+function [x] = newton( f, df, x0, tol, nmax)
 	phi = (1 + sqrt(5))/2
 	f = inline(f)
 	df = inline(df)
@@ -33,7 +33,7 @@ function newton( f, df, x0, tol, nmax)
 
 end
 
-function phi_frac(iteration=10, err=1*10^-1)
+function [x] = phi_frac(iteration=10, err=1*10^-1)
 	phi = (1 + sqrt(5))/2
 	aux = 1
 	x(1,1) = 1
@@ -207,7 +207,7 @@ function exponential(p, iteration, err)
 	fprintf(file,'%d & %.14e &  %.14e & %.14e \\\\ \n\\hline\n',x);
 	fprintf(file, '\\end{tabular}\n')
 	fprintf(file, '\\caption{Convergência de $e^x$ utilizando série de Taylor}\n')
-	fprintf(file, '\\label{table:erdos}\n')
+	fprintf(file, '\\label{table:exponential}\n')
 	fprintf(file, '\\end{table}')
 	fclose(file)
 end
